@@ -1,0 +1,35 @@
+<html>
+    <style>
+        body {
+          background-image: url('bg.png');
+          background-size: cover;
+          background-attachment: fixed;
+          color:white;
+        }
+        footer{
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+        }
+        form{
+            /* display:table-column; */
+            margin: 0 auto;
+        }
+    </style>
+    <h1 class = 'text'>Upload your cover of the song here!</h1>
+    <form action="uploaded.html">
+        <input type="file" name="file" id="file">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name=""name>
+        <label for="instrument">Instrument:</label>
+        <input type="text" id="instrument" name="instrument">        
+        <input type="submit" value="Upload">
+    </form>
+    <h2>
+        <a href="index.html">Go back to radio</a>
+    </h2>
+    <footer>
+        <p>Created by: <a href="https://github.com/TheR3dWizard">Sreeraghavan R</a></p>
+    </footer>
+</html>
