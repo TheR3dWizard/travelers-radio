@@ -8,7 +8,7 @@ audio_data = None
 def generate_audio():
     global audio_data
     while True:
-        with open("Travelers.mp3", "rb") as audio_file:
+        with open("../assets/Travelers.mp3", "rb") as audio_file:
             data = audio_file.read(1024)
             while data:
                 # print("Reading data") #WORKS
@@ -20,7 +20,7 @@ def generate_audio():
 def stream_audio():
     def generate():
         while True:
-            with open("Travelers.mp3", "rb") as audio_file:
+            with open("../assets/Travelers.mp3", "rb") as audio_file:
                 data = audio_file.read(1024)
                 while data:
                     yield data

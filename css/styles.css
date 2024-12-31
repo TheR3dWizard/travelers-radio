@@ -1,0 +1,22 @@
+body {
+    background-image: url('../assets/bg.png');
+    background-size: cover;
+    background-attachment: fixed;
+    color:white;
+}
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+form{
+    /* display:table-column; */
+    margin: 0 auto;
+}
+th{
+    padding: 10px;
+}
+.cont-table{
+    width:100%;
+}
