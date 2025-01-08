@@ -20,7 +20,7 @@ def generate_audio():
 def stream_audio():
     def generate():
         while True:
-            with open("../assets/Travelers.mp3", "rb") as audio_file:
+            with open("./assets/Travelers.mp3", "rb") as audio_file:
                 data = audio_file.read(1024)
                 while data:
                     yield data
@@ -32,7 +32,7 @@ def stream_audio():
                 print("Sending data")
                 print(audio_data)
                 yield audio_data
-    return Response(generatelive(), mimetype="audio/mpeg")
+    return Response(generate(), mimetype="audio/mpeg")
 
 if __name__ == '__main__':
     thread = threading.Thread(target=generate_audio)
