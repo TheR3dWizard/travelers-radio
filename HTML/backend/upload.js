@@ -1,6 +1,6 @@
-document.addEventListener("DomContentLoaded",()=>{
+document.addEventListener("DOMContentLoaded",()=>{
     const form = document.querySelector(".modern-form");
-    form.addEventListener("upload",(event)=>{
+    form.addEventListener("submit",(event)=>{
         const name = document.getElementById("name").value.trim();
         const instrument = document.getElementById("instrument").value.trim();
         const file = document.getElementById("file").files[0];
