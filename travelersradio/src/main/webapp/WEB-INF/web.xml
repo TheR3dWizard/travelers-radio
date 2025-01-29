@@ -13,17 +13,6 @@
   <display-name>Archetype Created Web Application</display-name>
 
 
-    <!-- Servlet Declaration -->
-    <servlet>
-        <servlet-name>HomePageServlet</servlet-name>
-        <servlet-class>com.redwizard.HomePageServlet</servlet-class>
-    </servlet>
-
-    <!-- URL Mapping -->
-    <servlet-mapping>
-        <servlet-name>HomePageServlet</servlet-name>
-        <url-pattern>/radio</url-pattern>
-    </servlet-mapping>
 
 </web-app>
 
