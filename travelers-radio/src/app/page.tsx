@@ -1,7 +1,28 @@
 // app/page.js (Next.js 13+ with App Router) 
 // or pages/index.js (Next.js with Pages Router)
+"use client";
+
+import {useEffect, useState} from 'react';
 
 export default function Home() {
+
+  const [Instruments, setInstruments] = useState<string[]>([]);
+
+  useEffect(()=> {
+    async function fetchInstruments(){
+      try{
+        const res = await fetch("http://13.91.248.254:5000/current_stems");
+        const data = await res.json();
+        setInstruments(data.current_stems);
+      }catch(err){
+        console.error("Error fetching instruments:", err);
+      }
+    }
+    fetchInstruments();
+    const interval = setInterval(fetchInstruments, 5000); // Fetch every 5 seconds
+    return () => clearInterval(interval);
+  }, [])
+
   return (
     <div className="min-h-screen flex justify-center items-center bg-cover bg-fixed bg-center p-5"
          style={{ backgroundImage: "url('/bg.png')" }}>
@@ -15,17 +36,38 @@ export default function Home() {
             Listen along to Travelers with everyone around the world
           </h2>
 
-          <audio
-            controls
-            src="http://13.91.248.254:8000/mystream"
-            className="block mx-auto w-full max-w-md my-5"
-          />
+            <button
+              onClick={() => {
+              const audio = document.getElementById('travelers-audio') as HTMLAudioElement | null;
+              if (audio) {
+                if (audio.paused) {
+                // Reset the stream to avoid lag
+                audio.src = "http://13.91.248.254:8000/mystream";
+                audio.load();
+                audio.play();
+                } else {
+                audio.pause();
+                }
+              }
+              }}
+              className="block mx-auto w-16 h-16 rounded-full bg-purple-700 hover:bg-purple-800 text-white flex items-center justify-center text-2xl my-5 focus:outline-none"
+              aria-label="Play/Pause"
+            >
+              {typeof window !== "undefined" && (document.getElementById('travelers-audio') as HTMLAudioElement | null)?.paused ? "▶" : "⏸"}
+            </button>
+            <audio
+              id="travelers-audio"
+              src="http://13.91.248.254:8000/mystream"
+              style={{ display: 'none' }}
+            />
 
           <dl className="my-5 p-3 bg-pink-200 rounded-md">
             <dt className="font-bold text-pink-900">Current Instruments:</dt>
-            <dd className="ml-5 text-base"><strong>Piano</strong></dd>
-            <dd className="ml-5 text-base"><strong>Drums</strong></dd>
-            <dd className="ml-5 text-base"><strong>Electric Guitar</strong></dd>
+            {Instruments.map((instrument, index) => (
+              <dd key={index} className="ml-5 text-base">
+                <strong>{instrument}</strong>
+              </dd>
+            ))}
           </dl>
 
           <h2 className="text-xl text-purple-700 text-center">
