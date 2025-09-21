@@ -72,13 +72,13 @@ export default function Home() {
 
           <h2 className="text-xl text-purple-700 text-center">
             <a href="/upload" className="text-yellow-600 hover:text-yellow-400 transition">
-              Want to upload your cover?
+              Want to upload your cover? (Coming Soon)
             </a>
           </h2>
 
           <h2 className="text-xl text-purple-700 text-center">
             <a href="/contributors" className="text-yellow-600 hover:text-yellow-400 transition">
-              See contributors
+              See contributors (Coming Soon)
             </a>
           </h2>
         </div>
