@@ -1,2 +1,8 @@
 .pdf
 Reports/Report5.docx
+/secrets/*
+*.pem
+*.txt
+*.mp3
+*.flac
+.env
